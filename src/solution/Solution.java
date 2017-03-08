@@ -46,15 +46,15 @@ public class Solution{
   
   public static boolean palindromeCheck(String w){
     int length = w.length();
-    int x = length-1;
+    int back = length-1;
     
     char[] c = w.toCharArray();
     char[] backwards = new char[length];
     
   for(int i = 0; i < length; i++)
     {
-      backwards[i] = c[x];
-      x-=1;                 
+      backwards[i] = c[back];
+      back-=1;                 
     }
     
     String origWord = String.valueOf(c);
@@ -72,26 +72,26 @@ public class Solution{
   {
     int length = words.length;
     String concat = "";
-    int x = 0;
+    int count = 0;
     String ans[] = new String[length];
     Boolean check;
     
-    for(int i = 0; i < length; i++)
+    for(int x = 0; x < length; x++)
     {
-        for(int j = 0; j < length; j++)
+        for(int y = 0; y < length; y++)
         {
-            if(i == j || j == i)
-                break;
+            if(x == y || y == x)
+                continue;
             
-            concat = words[j].concat(words[i]);
+            concat = words[y].concat(words[x]);
             System.out.println(concat);
             check = palindromeCheck(concat);      
             
             if (check == true)
             {
-                ans[x] = words[j];
-                ans[x+1] = words[i];
-                x+=2;
+                ans[count] = words[y];
+                ans[count+1] = words[x];
+                count+=2;
             }
         }
     }
